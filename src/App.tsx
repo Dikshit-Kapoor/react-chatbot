@@ -10,12 +10,13 @@ function App() {
   const [question, setQuestion] = useState<string>('');
   const [answer, setAnswer] = useState<string>("");
   const [role, setRole] = useState<string>("user");
+  const API_KEY=import.meta.env.VITE_API_KEY;
 
   const handleSubmit = async (): Promise<any> => {
     setAnswer("loading the answer...")
     setRole("user")
     setAnswer(question)
-    const response: any = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDuOiQv1CDVWUlKuGkxI3BmNYMX0dBTXbI', {
+    const response: any = await axios.post(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
       contents: [
         {
           parts: [{ text: question }]
