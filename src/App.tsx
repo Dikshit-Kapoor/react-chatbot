@@ -13,6 +13,8 @@ function App() {
 
   const handleSubmit = async (): Promise<any> => {
     setAnswer("loading the answer...")
+    setRole("user")
+    setAnswer(question)
     const response: any = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDuOiQv1CDVWUlKuGkxI3BmNYMX0dBTXbI', {
       contents: [
         {
@@ -30,27 +32,29 @@ function App() {
   return (
     <div className="App">
       <div className="Column">
-      <h1 className="Title">CHAT AI</h1>
-  
-      <div className="Content">
-      <div className={styles.wrapper2}>
-      <div>
-        <img
-          src={role === "assistant" ? bot : user}
-          className={styles.avatar}
-          alt="profile avatar"
-        />
-      </div>
+        <h1 className="Title">CHAT AI</h1>
+
+        <div className="Content">
+          <div className={styles.wrapper2}>
+            <div>
+              <img
+                src={role === "assistant" ? bot : user}
+                className={styles.avatar}
+                alt="profile avatar"
+              />
+            </div>
+            <div> {answer}</div>
+
+          </div>
+
         </div>
-       {answer}
+
+        <div className={styles.wrapper}>
+          <input placeholder="Your prompt here..." className={styles.text} value={question} onChange={(e) => { setQuestion(e.target.value) }} ></input>
+          <button className={styles.btn} onClick={handleSubmit}> Go</button>
         </div>
-      
-      <div className={styles.wrapper}>
-      <input placeholder="Your prompt here..."  className={styles.text} value={question} onChange={(e) => { setQuestion(e.target.value) }} ></input>
-      <button className={styles.btn} onClick={handleSubmit}> Go</button>
+
       </div>
-      
-    </div>
     </div>
   )
 }
