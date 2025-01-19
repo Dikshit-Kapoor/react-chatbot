@@ -23,10 +23,10 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-7xl font-bold underline">CHAT AI</h1>
+      <h1 className="text-2xl font-bold underline">CHAT AI</h1>
       <textarea value={question} onChange={(e) => { setQuestion(e.target.value) }} ></textarea>
       <button onClick={handleSubmit}>Generate Answer</button>
-      <p>{answer}</p>
+      <pre className="text-sm/6 text-gray-900">{answer}</pre>
     </div>
   )
 }
