@@ -4,3 +4,8 @@ export interface UserType{
     email: string,
     authtoken?: string
 }
+
+export interface Authcontext{
+    user: UserType|null,
+    setUser: (user:UserType|null)=>void
+}

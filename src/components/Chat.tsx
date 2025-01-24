@@ -53,7 +53,7 @@ function Chat() {
 
         <div className={styles.wrapper}>
           <input placeholder="Your prompt here..." className={styles.text} value={question} onChange={(e) => { setQuestion(e.target.value) }} ></input>
-          <button className={styles.btn} onClick={handleSubmit}> Go</button>
+          <button tabIndex={0} onKeyDown={e=>e.key==="Enter"? handleSubmit:''} className={styles.btn} onClick={handleSubmit}> Go</button>
         </div>
 
       </div>
