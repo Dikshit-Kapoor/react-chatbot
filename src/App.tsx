@@ -8,7 +8,8 @@ import {
 import { Usercontext } from './context/Authcontext';
 import { UserType } from './types/type';
 import { useState } from 'react';
-import Homeee from './pages/Home';
+import SigninPage from './pages/SigninPage';
+import Home from './pages/Home';
 function App() {
  const [user,setUser]=useState<UserType|null>(null)
 
@@ -17,7 +18,8 @@ function App() {
       <Router>
       <Usercontext.Provider value={{ user, setUser }}>
         <Routes>
-          <Route path="/" element={<Homeee/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="sign-in" element={<SigninPage/>}/>
           <Route path="/chat" element={<Chat/>}/>
         </Routes>
         </Usercontext.Provider>

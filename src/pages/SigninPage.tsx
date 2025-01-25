@@ -4,7 +4,8 @@ import AuthForm from "../components/AuthForm";
 const SigninPage=()=>{
     return(
         <Layout>
-            <div>
+            <div className="authContainer">
+               <AuthForm mode="signin" title="" buttonText="" linkUrl="" linkText=""/>
 
             </div>
         </Layout>
