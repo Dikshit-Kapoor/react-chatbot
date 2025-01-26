@@ -34,7 +34,6 @@ function Chat() {
   return (
     <div className="App">
       <div className="Column">
-        <h1 className="Title">CHAT AI</h1>
 
         <div className="Content">
           <div className={styles.wrapper2}>

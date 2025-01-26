@@ -10,6 +10,7 @@ import { UserType } from './types/type';
 import { useState } from 'react';
 import SigninPage from './pages/SigninPage';
 import Home from './pages/Home';
+import RegisterPage from './pages/RegisterPage';
 function App() {
  const [user,setUser]=useState<UserType|null>(null)
 
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="sign-in" element={<SigninPage/>}/>
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/chat" element={<Chat/>}/>
         </Routes>
         </Usercontext.Provider>

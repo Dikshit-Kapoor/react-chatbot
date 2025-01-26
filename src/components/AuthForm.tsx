@@ -53,7 +53,7 @@ const AuthForm=({mode,title,buttonText,linkUrl,linkText}:AuthFormProps)=>{
         }
       />
       {mode === "register" && (
-        <>
+        <div>
           <input
             type="text"
             placeholder="Name"
@@ -65,7 +65,7 @@ const AuthForm=({mode,title,buttonText,linkUrl,linkText}:AuthFormProps)=>{
               }))
             }
           />
-        </>
+        </div>
       )}
       <button type="submit" className="ctaLink">
         {buttonText}
