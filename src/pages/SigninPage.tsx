@@ -6,7 +6,6 @@ const SigninPage=()=>{
         <Layout>
             <div className="authContainer">
                <AuthForm mode="signin" title="" buttonText="" linkUrl="" linkText=""/>
-
             </div>
         </Layout>
     )
