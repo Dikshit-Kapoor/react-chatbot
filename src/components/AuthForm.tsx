@@ -20,7 +20,6 @@ const AuthForm=({mode,title,buttonText,linkUrl,linkText}:AuthFormProps)=>{
 
     const [formState, setFormState] = useState(initialFormState);
     const navigate = useNavigate();
-  
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
   
