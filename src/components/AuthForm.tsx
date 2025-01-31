@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import styles from '../styles/authForm.module.css';
+import { logInWithEmailAndPassword } from "../utils/firebase";
+import { UserAuth } from "../pages/UserAuth";
+
 
 interface AuthFormProps {
     mode: "signin" | "register";
@@ -17,18 +20,28 @@ interface AuthFormProps {
   };
 
 const AuthForm=({mode,title,buttonText,linkUrl,linkText}:AuthFormProps)=>{
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const navigate = useNavigate();
+    const { login } = UserAuth();
 
     const [formState, setFormState] = useState(initialFormState);
-    const navigate = useNavigate();
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-  
-      navigate("/");
+      let user = null;
+      setIsSubmitting(true);
+      if (mode === "signin") {
+        user = await logInWithEmailAndPassword(
+          formState.email,
+          formState.password
+        );
+        
+      }
+      navigate("/chat");
     };
     return(
         
 <form onSubmit={handleSubmit} className={styles.formContainer}>
-      <h1 className={styles.authTitle}>{title}</h1>
+      <h1 style={{color:"whitesmoke"}}>{title}</h1>
       <input
         type="email"
         placeholder="Email"

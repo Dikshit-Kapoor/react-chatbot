@@ -12,6 +12,7 @@
   .authTitle {
     line-height: 1.5;
     font-size: 2rem;
+    color: whitesmoke;
   }
   
   @media (min-width: 840px) {
@@ -28,6 +29,7 @@
   
   .iconLink {
     display: flex;
+    color: whitesmoke;
     align-items: center;
     gap: 0.5rem;
   }
