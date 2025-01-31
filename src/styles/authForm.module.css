@@ -15,12 +15,7 @@
     color: whitesmoke;
   }
   
-  @media (min-width: 840px) {
-    .authTitle {
-      font-size: 3.2rem;
-    }
-  }
-  
+
   .inlineSvg {
     width: 1rem;
     height: 1rem;

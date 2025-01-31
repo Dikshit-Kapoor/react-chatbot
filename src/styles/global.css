@@ -59,8 +59,8 @@
   }
   
   h1 {
-    color: #3a0087;
-    background: linear-gradient(to right, #3a0087, #363240);
+    color: whitesmoke;
+    background: linear-gradient(to right, #e3ddec, #887da3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2.25rem;

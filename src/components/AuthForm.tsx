@@ -41,7 +41,7 @@ const AuthForm=({mode,title,buttonText,linkUrl,linkText}:AuthFormProps)=>{
     return(
         
 <form onSubmit={handleSubmit} className={styles.formContainer}>
-      <h1 style={{color:"whitesmoke"}}>{title}</h1>
+     <h1>{title}</h1>
       <input
         type="email"
         placeholder="Email"
