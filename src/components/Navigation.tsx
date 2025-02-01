@@ -11,7 +11,7 @@ const Navigation = () => {
   return (
     <nav className={styles.nav}>
       <button className={styles.logout} onClick={handleLogOut}>
-        Log Out
+        Sign In
       </button>
     </nav>
   );

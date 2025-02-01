@@ -1,11 +1,11 @@
 .App {
   display: grid;
   grid-template-columns: auto 50px;
-  gap: 20px;
+  gap:30px;
   max-width: 1000px;
   margin: 0  auto;
   min-height: 100vh;
-  padding: 20px;
+  padding: 30px;
 }
 
 .Column {
@@ -14,8 +14,8 @@
 
 .Title {
   padding: 30px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+  margin-bottom: 30px;
+  border-radius: 20px;
   color: black;
   background-color: rgb(218, 255, 170);
 }
@@ -23,7 +23,7 @@
 .Content {
   height: calc(100vh - 200px);
   overflow-y: scroll;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 ::-webkit-scrollbar {

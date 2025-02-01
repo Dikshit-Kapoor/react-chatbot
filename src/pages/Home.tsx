@@ -5,7 +5,7 @@ const Home=()=>{
         <div>
        <Navigation/>
        <Layout>
-        <p style={{ marginTop: "2rem" }}>Welcome back 👋</p>
+        <p style={{ marginTop: "2rem",color:"white" }}>Welcome back 👋</p>
       </Layout>
         </div>
     )
