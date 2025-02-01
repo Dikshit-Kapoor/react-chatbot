@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import styles from '../styles/authForm.module.css';
-import { logInWithEmailAndPassword } from "../utils/firebase";
+import { doSignInwithGoogle,logInWithEmailAndPassword } from "../utils/firebase";
 import { UserAuth } from "../pages/UserAuth";
 
 
@@ -30,10 +30,7 @@ const AuthForm=({mode,title,buttonText,linkUrl,linkText}:AuthFormProps)=>{
       let user = null;
       setIsSubmitting(true);
       if (mode === "signin") {
-        user = await logInWithEmailAndPassword(
-          formState.email,
-          formState.password
-        );
+        user = await doSignInwithGoogle();
         
       }
       navigate("/chat");
