@@ -3,15 +3,15 @@ import { useUser } from "./User";
 
 export const UserAuth = () => {
     const { user, addUser, removeUser } = useUser();
-  
+
     const login = (user: UserType) => {
-      addUser(user);
+        console.log(user)
+        addUser(user);
     };
-  
+
     const logout = () => {
-      removeUser();
+        removeUser();
     };
-  
+
     return { user, login, logout };
-  };
-  
+};

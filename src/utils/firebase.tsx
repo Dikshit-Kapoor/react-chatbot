@@ -5,7 +5,8 @@ import {
     signOut,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    createUserWithEmailAndPassword
   } from "firebase/auth";
   
 const firebaseConfig={
@@ -28,7 +29,8 @@ export const logInWithEmailAndPassword = async (
     password: string
   ): Promise<User | null> => {
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
+        console.log(email,password)
+      const res = await createUserWithEmailAndPassword(auth, email, password);
       return res.user;
     } catch (err) {
       if (err instanceof Error) {
