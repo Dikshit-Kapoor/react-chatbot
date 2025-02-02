@@ -1,14 +1,11 @@
 import { initializeApp } from "firebase/app";
 import {
-    User,
     getAuth,
     signOut,
-    signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
     createUserWithEmailAndPassword
   } from "firebase/auth";
-  
 const firebaseConfig={
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -26,12 +23,19 @@ const auth=getAuth(firebaseApp);
 
 export const logInWithEmailAndPassword = async (
     email: string,
-    password: string
-  ): Promise<User | null> => {
+    password: string,
+    name: string
+  ): Promise< any | null> => {
     try {
         console.log(email,password)
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      return res.user;
+      console.log(res)
+      const userData = {
+        uid: res.user.uid,
+        name,
+        email: res.user.email,
+      };
+      return userData;
     } catch (err) {
       if (err instanceof Error) {
         // Handle authentication-specific errors gracefully

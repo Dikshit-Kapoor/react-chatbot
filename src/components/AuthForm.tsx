@@ -21,7 +21,6 @@ const initialFormState = {
 };
 
 const AuthForm = ({ mode, title, buttonText, linkUrl, linkText }: AuthFormProps) => {
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
     const { login } = UserAuth();
 
@@ -29,28 +28,21 @@ const AuthForm = ({ mode, title, buttonText, linkUrl, linkText }: AuthFormProps)
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         let user = null;
-        setIsSubmitting(true);
         if (mode === "signin") {
             user = await doSignInwithGoogle();
 
         }
         if (mode === "register") {
-            user = await logInWithEmailAndPassword(formState.email, formState.password);
-
+            user = await logInWithEmailAndPassword(formState.email, formState.password, formState.name);
         }
         console.log(user)
-        if(user!==null){
-      const userData={
-        userId: user.uid || "",
-        name: user.displayName || "",
-        email: user.email || "",        
-      
-    }
-    login(userData);
-    navigate("/chat"); 
-}
-    
-       
+        if (user !== null) {
+        
+            login(user);
+            navigate("/chat");
+        }
+
+
     };
     return (
 
