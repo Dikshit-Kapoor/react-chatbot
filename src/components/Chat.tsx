@@ -1,4 +1,4 @@
-
+import Navigation from './Navigation';
 import { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
@@ -32,6 +32,11 @@ function Chat() {
 
 
     return (
+       <div>
+
+      
+        <Navigation signin='Log out'/>
+
         <div className="App">
             <div className="Column">
 
@@ -56,6 +61,7 @@ function Chat() {
                 </div>
 
             </div>
+        </div>
         </div>
     )
 }

@@ -1,20 +1,29 @@
 import styles from "../styles/navigation.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
-  const navigate = useNavigate();
+interface NavigationProps {
+    signin: string,
+}
 
-  const handleLogOut = () => {
-    navigate("/sign-in");
-  };
+const Navigation = ({signin}: NavigationProps) => {
+    const navigate = useNavigate();
 
-  return (
-    <nav className={styles.nav}>
-      <button className={styles.logout} onClick={handleLogOut}>
-       Log Out
-      </button>
-    </nav>
-  );
+    const handleLogIn = () => {
+        navigate("/sign-in");
+    };
+
+    return (
+        <nav className={styles.nav}>
+          
+
+                <button className={styles.logout} onClick={handleLogIn}>
+                   {signin}
+                </button>
+         
+
+
+        </nav>
+    );
 };
 
 export default Navigation;
