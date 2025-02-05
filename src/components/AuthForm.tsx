@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from '../styles/authForm.module.css';
 import { FaUserPlus } from "react-icons/fa";
 import { doSignInwithGoogle, logInWithEmailAndPassword } from "../utils/firebase";
-import { UserAuth } from "../pages/UserAuth";
+import { UserAuth } from "../Pages/UserAuth";
 
 
 interface AuthFormProps {

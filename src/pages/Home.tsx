@@ -1,5 +1,5 @@
-import Navigation from "../components/Navigation";
-import Layout from "../components/Layout";
+import Navigation from "../Components/Navigation";
+import Layout from "../Components/Layout";
 const Home=()=>{
     return (
         <div>
