@@ -1,5 +1,5 @@
-import '../src/App.css';
-import Chat from '../src/Components/Chat.tsx';
+import './App.css';
+import Chat from './Components/Chat';
 import {
   Route,
   BrowserRouter as Router,
