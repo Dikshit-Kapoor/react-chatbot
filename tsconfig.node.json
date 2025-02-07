@@ -4,7 +4,7 @@
     "target": "ES2022",
     "lib": ["ES2023"],
     "allowJs": true,
-    "baseUrl": ".",
+    "baseUrl": "src/*",
     "module": "ESNext",
     "skipLibCheck": true,
 
