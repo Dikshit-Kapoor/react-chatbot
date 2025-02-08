@@ -6,7 +6,7 @@
     "lib": ["ES2023"],
     "allowJs": true,
     "jsx": "react-jsx",
-    "baseUrl": "src/*",
+    "baseUrl": ".",
     "module": "ESNext",
     "skipLibCheck": true,
 
