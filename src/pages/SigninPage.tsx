@@ -1,5 +1,5 @@
-import Layout from "../Components/Layout";
-import AuthForm from "../Components/AuthForm";
+import Layout from "../components/Layout";
+import AuthForm from "../components/AuthForm";
 
 const SigninPage=()=>{
     return(

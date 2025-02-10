@@ -1,15 +1,15 @@
 import './App.css';
-import Chat from './Components/Chat';
+import Chat from './components/Chat';
 import {
   Route,
   BrowserRouter as Router,
   Routes} from "react-router-dom";
-import { Usercontext } from './Context/Authcontext';
+import { Usercontext } from './context/Authcontext';
 import { UserType } from './types/type';
 import { useState } from 'react';
-import SigninPage from './Pages/SigninPage';
-import Home from './Pages/Home';
-import RegisterPage from './Pages/RegisterPage';
+import SigninPage from './pages/SigninPage';
+import Home from './pages/Home';
+import RegisterPage from './pages/RegisterPage';
 function App() {
  const [user,setUser]=useState<UserType|null>(null)
 
