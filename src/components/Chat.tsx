@@ -3,8 +3,8 @@ import { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 import styles from '../styles/Input.module.css';
-import bot from "../icons/bot.png";
-import user from "../icons/user.png";
+import bot from "../Icons/bot.png";
+import user from "../Icons/user.png";
 
 function Chat() {
     const [question, setQuestion] = useState<string>('');
