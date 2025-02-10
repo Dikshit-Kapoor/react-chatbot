@@ -3,7 +3,6 @@
     "incremental": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2022",
-    "lib": ["ES2023"],
     "allowJs": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
@@ -16,7 +15,7 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-
+    "lib": ["dom", "esnext","ES2023"] ,
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
