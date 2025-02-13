@@ -1,4 +1,3 @@
-import Navigation from './Navigation';
 import { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
