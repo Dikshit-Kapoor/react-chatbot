@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 import styles from '../styles/Input.module.css';
@@ -61,5 +61,5 @@ function Chat() {
         </div>
     )
 }
-
+React.memo(Chat);
 export default Chat
