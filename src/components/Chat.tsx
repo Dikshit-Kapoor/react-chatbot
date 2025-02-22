@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 import styles from '../styles/Input.module.css';
@@ -6,6 +6,7 @@ import bot from "../Icons/bot.png";
 import user from "../Icons/user.png";
 
 function Chat() {
+
     const [question, setQuestion] = useState<string>('');
     const [answer, setAnswer] = useState<string>("");
     const [role, setRole] = useState<string>("user");
@@ -32,7 +33,7 @@ function Chat() {
     return (
        <div>
 
-    
+
         <div className="App">
             <div className="Column">
 
@@ -61,5 +62,4 @@ function Chat() {
         </div>
     )
 }
-React.memo(Chat);
 export default Chat
