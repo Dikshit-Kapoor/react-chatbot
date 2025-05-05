@@ -10,7 +10,7 @@ function Chat() {
     const [question, setQuestion] = useState<string>('');
     const [answer, setAnswer] = useState<string>("");
     const [role, setRole] = useState<string>("user");
-    const API_KEY = import.meta.env.VITE_API_KEY;
+    const API_KEY = process.env.VITE_API_KEY;
     const API_URL = import.meta.env.VITE_GEMINI_API_URL;
 
     const handleSubmit = async (): Promise<any> => {
