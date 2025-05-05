@@ -2,7 +2,6 @@ import { MessageCircle, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
-
   const handleLogIn = () => {
     navigate("/sign-in");
   };
