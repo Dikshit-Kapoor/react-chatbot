@@ -11,3 +11,116 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+import React, { useState } from "react";
+
+type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
+
+interface Props {
+  json1: JsonValue;
+  json2: JsonValue;
+  onClose: () => void;
+}
+
+const ModalDifference: React.FC<Props> = ({ json1, json2, onClose }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showDiffs, setShowDiffs] = useState(false);
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white w-[90%] max-w-6xl p-6 rounded-xl shadow-lg overflow-y-auto max-h-[95vh]">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">🔍 JSON Comparison</h2>
+          <button onClick={onClose} className="text-gray-600 hover:text-red-500 text-xl">✕</button>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-4 mb-4">
+          <input
+            type="text"
+            placeholder="Search field name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <button
+            onClick={() => setShowDiffs(!showDiffs)}
+            className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+          >
+            {showDiffs ? "Hide Differences" : "Show Differences"}
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* JSON 1 */}
+          <div className="bg-gray-100 p-4 rounded overflow-auto text-xs max-h-[70vh]">
+            <h4 className="font-semibold text-indigo-600 mb-2">JSON 1</h4>
+            <pre
+              className="whitespace-pre-wrap break-words"
+              dangerouslySetInnerHTML={{
+                __html: syntaxHighlightWithDiff(json1, json2, "red", searchTerm, showDiffs),
+              }}
+            />
+          </div>
+
+          {/* JSON 2 */}
+          <div className="bg-gray-100 p-4 rounded overflow-auto text-xs max-h-[70vh]">
+            <h4 className="font-semibold text-indigo-600 mb-2">JSON 2</h4>
+            <pre
+              className="whitespace-pre-wrap break-words"
+              dangerouslySetInnerHTML={{
+                __html: syntaxHighlightWithDiff(json2, json1, "green", searchTerm, showDiffs),
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const syntaxHighlightWithDiff = (
+  val1: JsonValue,
+  val2: JsonValue,
+  color: "red" | "green",
+  search: string,
+  showDiffs: boolean,
+  path: string[] = []
+): string => {
+  if (typeof val1 !== "object" || val1 === null || typeof val2 !== "object" || val2 === null) {
+    return highlightValue(val1, val2, color, showDiffs);
+  }
+
+  if (Array.isArray(val1) && Array.isArray(val2)) {
+    const result = val1.map((item, i) =>
+      syntaxHighlightWithDiff(item, val2[i], color, search, showDiffs, [...path, String(i)])
+    );
+    return `[\n${result.join(",\n")}\n]`;
+  }
+
+  const allKeys = new Set([...Object.keys(val1 as any), ...Object.keys(val2 as any)]);
+  const result: string[] = [];
+  result.push("{");
+
+  Array.from(allKeys).forEach((key) => {
+    const keyMatch = search && key.toLowerCase().includes(search.toLowerCase());
+    const keyLabel = keyMatch
+      ? `<span class="bg-yellow-200 px-1 rounded">${key}</span>`
+      : key;
+
+    const child1 = (val1 as any)[key];
+    const child2 = (val2 as any)[key];
+
+    const valueStr = syntaxHighlightWithDiff(child1, child2, color, search, showDiffs, [...path, key]);
+    result.push(`  "${keyLabel}": ${valueStr},`);
+  });
+
+  result.push("}");
+  return result.join("\n");
+};
+
+const highlightValue = (v1: any, v2: any, color: "red" | "green", showDiffs: boolean): string => {
+  const same = JSON.stringify(v1) === JSON.stringify(v2);
+  const cls = !same && showDiffs ? `text-${color}-600 font-semibold` : "";
+  return `<span class="${cls}">${JSON.stringify(v1)}</span>`;
+};
+
+export default ModalDifference;
